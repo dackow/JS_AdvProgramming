@@ -1,20 +1,34 @@
 ﻿using System;
+using System.IO;
+using System.Threading.Channels;
 
 namespace AdvancedCSharp.Samples.Delegates
 {
-    public delegate int IntOperation(int x, int y);
-
+   
     internal class DelegateOverview
     {
+        public delegate int IntOperation(int x, int y);
+
         private static Action<int, int> _action;
         static void Main()
         {
             var a = 3;
             var b = 2;
 
+
+            IntOperation op = (x, y) =>
+            {
+                Console.WriteLine("a = " + a);
+                Console.WriteLine("b = " + b);
+                return x + y;
+            };
+
+            DoSomething(op, (str) => { Console.WriteLine(str); }) ;
+
+
             IntOperation operation = (x, y) => { Console.WriteLine("add"); return x + y; };
             //var operation = new IntOperation((x, y) => { return x - y; });  //or this
-             //var operation = new IntOperation(Math.Min);                    //or this
+            operation = Func;                    //or this
 
             var ret = operation.Invoke(a,b); //sum
             Console.WriteLine("Sum on {0} and {1} is {2}", a,b, ret);
@@ -26,6 +40,9 @@ namespace AdvancedCSharp.Samples.Delegates
             operation = (x, y) => { Console.WriteLine("prod"); return x * y; }; //what about += events
             ret = operation.Invoke(a, b); //product
             Console.WriteLine("Product on {0} and {1} is {2}", a, b, ret);
+
+
+            //Action<string>
 
             /*
              * Action  void Foo()
@@ -55,5 +72,28 @@ namespace AdvancedCSharp.Samples.Delegates
             throw new NotImplementedException();
         }
 
+        //int vs int? Nullable<int>
+        //object vs object?
+        public static void DoSomething(IntOperation? myDelegate, Action<string> logger)
+        {
+            ///
+            ///
+            if (myDelegate != null)
+            {
+                var ret = myDelegate(1, 2);
+            }
+
+            myDelegate?.Invoke(1, 2);
+            logger("wykonano myDelegate");
+            
+            // Console.WriteLine("wykonano myDelegate");
+            //File.AppendAllText("", "wykonano myDelegate");
+
+
+            var retAsync = myDelegate.BeginInvoke(1, 2, null, null);
+
+
+            var result = myDelegate.EndInvoke(retAsync);
+        }
     }
 }

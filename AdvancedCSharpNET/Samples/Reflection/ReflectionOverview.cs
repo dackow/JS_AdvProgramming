@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using System.IO;
+using System.Linq;
 
 namespace AdvancedCSharp.Samples.Reflection
 {
@@ -13,6 +14,10 @@ namespace AdvancedCSharp.Samples.Reflection
 
             Console.WriteLine("Assembly Full Name:");
             Console.WriteLine(assembly.FullName);
+
+
+            var carType = assembly.DefinedTypes.First(t => t.FullName.Equals("Car"));
+
 
             AssemblyName assemblyName = assembly.GetName();
             Console.WriteLine("\nName: {0}", assemblyName.Name);

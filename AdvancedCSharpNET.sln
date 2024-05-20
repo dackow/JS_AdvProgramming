@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvCSharp", "AdvCSharp\AdvC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExercisesNETFramework", "ExercisesNETFramework\ExercisesNETFramework.csproj", "{0AE976C0-FBC7-4CD1-A95A-506FF0B55317}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testPlugin", "testPlugin\testPlugin.csproj", "{792182AD-7500-4BB0-A89C-FF120725F02D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{93C1ED91-9A83-4E67-80F3-5EB2834AA419}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,14 @@ Global
 		{0AE976C0-FBC7-4CD1-A95A-506FF0B55317}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AE976C0-FBC7-4CD1-A95A-506FF0B55317}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AE976C0-FBC7-4CD1-A95A-506FF0B55317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{792182AD-7500-4BB0-A89C-FF120725F02D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{792182AD-7500-4BB0-A89C-FF120725F02D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{792182AD-7500-4BB0-A89C-FF120725F02D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{792182AD-7500-4BB0-A89C-FF120725F02D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93C1ED91-9A83-4E67-80F3-5EB2834AA419}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93C1ED91-9A83-4E67-80F3-5EB2834AA419}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93C1ED91-9A83-4E67-80F3-5EB2834AA419}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93C1ED91-9A83-4E67-80F3-5EB2834AA419}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

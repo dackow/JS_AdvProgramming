@@ -3,7 +3,7 @@
     public class Car
     {
         //Constant Field
-        private const int ServiceCheckAfter = 10000;
+        private const int ServiceCheckAfter = 10_000;
 
         // Fields
         private readonly int _speed;
@@ -20,6 +20,10 @@
 
 
         // Methods
+        /// <summary>
+        /// This methods increases Distance by multiplyingduration with speed
+        /// </summary>
+        /// <param name="duration">some int</param>
         public void Drive(int duration)
         {
             Distance = CalculateDistance(_speed, duration);

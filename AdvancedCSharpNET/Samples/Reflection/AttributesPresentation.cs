@@ -21,7 +21,7 @@ namespace AdvancedCSharp.Samples.Reflection
         }
     }
 
-    [AttributeUsage(AttributeTargets.Method, Inherited = false, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor | AttributeTargets.Property , Inherited = false, AllowMultiple = true)]
     public class UpdateMethodAttribute : Attribute
     {
         public UpdateMethodAttribute(int sequence, params UpdateProfile[] profiles)
@@ -61,7 +61,7 @@ namespace AdvancedCSharp.Samples.Reflection
             Console.WriteLine("German translations updated");
         }
 
-        [UpdateMethod(4, UpdateProfile.German)]
+        [UpdateMethodAttribute(4, UpdateProfile.German)]
         [UpdateMethod(9, UpdateProfile.English)]
         private void InstallWordChecker()
         {

@@ -16,7 +16,12 @@ namespace AdvancedCSharp.Samples.Reflection
             object sampleClassObject = assembly.CreateInstance(SampleClass, false,
                 BindingFlags.ExactBinding,
                 null, new object[] { 2 }, null, null);
-            var classType = assembly.GetType(SampleClass);
+            var classType = assembly.GetType(SampleClass); // typeof(SampleClass)
+
+            var c = (AdvancedCSharp.Samples.Reflection.SampleClass)sampleClassObject;
+
+
+            c.Sum();
 
             //generic type initialization
             var genericType = assembly.GetType("AdvancedCSharp.Samples.Reflection.VersionUpdate");
@@ -28,6 +33,13 @@ namespace AdvancedCSharp.Samples.Reflection
             MethodInfo sum = classType.GetMethod("Sum", new Type[] { typeof(Int32) });
             object ret = sum.Invoke(sampleClassObject, new object[] { 10 }); 
             Console.WriteLine("Sum returned {0}.", ret); // 2+0+10=12   _fieldFactor + PropertyFactor + parameter
+
+
+            dynamic myDynamicObject = sampleClassObject;
+
+            var result = myDynamicObject.Sum(10);
+            //myDynamicObject._fieldFactor = 3;
+            myDynamicObject.sdlkfjsfijdcklsjdflcfj();
 
             PropertyInfo prop = classType.GetProperty("PropertyFactor");
             prop.SetValue(sampleClassObject, 3);

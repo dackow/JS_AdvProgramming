@@ -12,7 +12,7 @@ namespace AdvancedCSharp.Samples.Delegates
         }
     }
 
-    class EventsPresentation
+    class EventsPresentation : IDisposable
     {
         public delegate void MessageEventHandler(object obj, MessageEventArgs eventArgs);
 
@@ -21,10 +21,30 @@ namespace AdvancedCSharp.Samples.Delegates
 
         public EventsPresentation()
         {
-            PreAction += Print;
+        }
+
+
+        public void Sub()
+        {
             PreAction += Print;
             PostAction += Print;
+
+            PreAction += (o, e) => { Console.WriteLine(o.ToString()); };  //mth1
         }
+
+        public void UnSub()
+        {
+            PreAction -= Print;
+            PostAction -= Print;
+
+            PreAction -= (o, e) => { Console.WriteLine(o.ToString()); }; //mth2
+        }
+
+        public void Dispose() 
+        {
+            UnSub();
+        }
+
 
         static void Main()
         {

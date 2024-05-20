@@ -37,7 +37,11 @@ namespace AdvancedCSharp.Samples.Extensions
         {
             items = new List<T>();
             items.Add(newelement);
+
+
             return items;
+
+
         }
 
         public static IEnumerable<T> GetDefaultfNull<T>(this IEnumerable<T> items, T defaultVal)
@@ -48,6 +52,8 @@ namespace AdvancedCSharp.Samples.Extensions
             }
             return items;
         }
+
+
         public static IEnumerable<T> Reverse<T>(this IEnumerable<T> items, T defaultVal)
         {
             items = new List<T>(items.Reverse());
