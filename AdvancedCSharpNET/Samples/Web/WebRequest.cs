@@ -12,11 +12,14 @@ namespace AdvancedCSharp.Samples.Web
         {
             var url = @"https://powerbi.microsoft.com/en-us/windows-license-terms/";
 
+            var factory = HttpClientFactory.Create();
 
             var httpClient = new HttpClient();
+            //httpClient.
 
             try
             {
+                
                 var httpResponse = httpClient.GetAsync(url).Result;
 
                 if(httpResponse.IsSuccessStatusCode)
@@ -26,6 +29,7 @@ namespace AdvancedCSharp.Samples.Web
 
 
                 httpClient.DefaultRequestHeaders.Add("key", "value");
+                
                 var httpPost = httpClient.PostAsync(url, new FormUrlEncodedContent(new Dictionary<string, string>()));
 
             }

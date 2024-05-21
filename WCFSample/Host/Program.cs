@@ -13,33 +13,20 @@ namespace Host
                    new Uri("http://localhost:8888/RectangleTransform"));
             svc.Description.Behaviors.Add(new ServiceMetadataBehavior { HttpGetEnabled = true });
             svc.Description.Behaviors.Find<ServiceDebugBehavior>().IncludeExceptionDetailInFaults = true;
-            svc.AddServiceEndpoint(typeof(IShapeTransformation), new WSHttpBinding(), "");
+            svc.AddServiceEndpoint(typeof(IShapeTransformation), new BasicHttpBinding(), "");
             var rectHost = new Host(svc);
 
-
-            svc = new ServiceHost(typeof(CalculationDuplex),
-                   new Uri("http://localhost:8888/CalcDuplex"));
-            svc.Description.Behaviors.Add(new ServiceMetadataBehavior { HttpGetEnabled = true });
-            svc.Description.Behaviors.Find<ServiceDebugBehavior>().IncludeExceptionDetailInFaults = true;
-            svc.AddServiceEndpoint(typeof(ICalculationDuplex), new WSDualHttpBinding(), "");
-            
-            var calcHost = new Host(svc);
 
             if (!rectHost.Start())
             {
                 rectHost.Stop();
                 return;
             }
-            if (!calcHost.Start())
-            {
-                calcHost.Stop();
-                return;
-            }
+           
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
             rectHost.Stop();
-            calcHost.Stop();
 
         }
 

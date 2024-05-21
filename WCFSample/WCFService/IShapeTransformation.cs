@@ -4,7 +4,7 @@ using System.ServiceModel;
 
 namespace WCFService
 {
-    [ServiceContract(Namespace = "WCFService.Standard", Name = "ShapeTransformation", SessionMode = SessionMode.Required)]
+    [ServiceContract(Namespace = "WCFService.Standard", Name = "ShapeTransformation")]
 
     public interface IShapeTransformation
     {
@@ -28,6 +28,8 @@ namespace WCFService
 
         [DataMember(Name = "Height", EmitDefaultValue = true, IsRequired = true)]
         public double RectHeight { get; set; }
+
+        public double Square { get; set; }
 
         public Rectangle(double width, double height)
         {

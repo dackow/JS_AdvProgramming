@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace AdvancedCSharp.Samples.Debugging
 {
@@ -56,11 +57,17 @@ namespace AdvancedCSharp.Samples.Debugging
         {
             try
             {
+
+
+                File.Open("", FileMode.CreateNew);
                 throw new Exception(message);
             }
-            catch (Exception e)
+            catch(FileNotFoundException fex)
             {
-                StackTrace st = new StackTrace(true);
+                throw new ApplicationException("",fex);
+            }
+            catch (Exception e)
+            {                StackTrace st = new StackTrace(true);
                 string indent = "";
                 for (int i = 0; i < st.FrameCount; i++)
                 {

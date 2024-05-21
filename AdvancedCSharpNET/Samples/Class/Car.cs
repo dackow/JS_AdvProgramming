@@ -1,4 +1,6 @@
-﻿namespace AdvancedCSharp.Samples.Class
+﻿using System;
+
+namespace AdvancedCSharp.Samples.Class
 {
     public class Car
     {
@@ -27,6 +29,11 @@
         public void Drive(int duration)
         {
             Distance = CalculateDistance(_speed, duration);
+        }
+
+        public void PrintState()
+        {
+            Console.WriteLine($"Distance {Distance}");
         }
 
         public bool IsServiceCheckNeeded()
