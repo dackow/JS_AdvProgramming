@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>AdvancedCSharp</RootNamespace>
-    <StartupObject>AdvancedCSharp.Samples.Debugging.StackTraceSample</StartupObject>
+    <StartupObject>AdvancedCSharp.Samples.Tasks.AsyncAwaitPresentation</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

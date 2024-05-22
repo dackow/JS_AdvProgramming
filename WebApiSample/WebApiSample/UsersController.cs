@@ -57,17 +57,20 @@ namespace WebApiSample
         [Route("Users/Add")]
         [ProducesResponseType(typeof(User), 201)]
         [ProducesResponseType(400)]
-        public ActionResult<User> AddUser([FromBody] User user)
+        public ActionResult<UserDto> AddUser([FromBody] User user)
         {
             if (!_users.Any(u => u.Id == user.Id))
             {
                 _users.Add(user);
-                return Created($"Users/{user.Id}", user);
+                return Created($"Users/{user.Id}", new UserDto { Id = user.Id, Login = user.Name });
             }
             else
             {
                 return BadRequest();
             }
+
+
+            //AutoMapper
         }
     }
 
@@ -75,6 +78,14 @@ namespace WebApiSample
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Password { get; set; }
+    }
+
+
+    public class UserDto
+    {
+        public int Id { get; set; }
+        public string Login { get; set; }
         public string Password { get; set; }
     }
 }

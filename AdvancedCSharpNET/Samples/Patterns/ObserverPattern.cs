@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AdvancedCSharp.Samples.Patterns
 {
@@ -61,17 +62,28 @@ namespace AdvancedCSharp.Samples.Patterns
                 gamer.ReceiveMessage(msg);
             }
         }
+
+        public void SendMessageToTeam(string team, string msg)
+        {
+            foreach (var gamer in _gamers.Where(g => g.Team.Equals(team, StringComparison.CurrentCultureIgnoreCase)))
+            {
+                gamer.ReceiveMessage(msg);
+            }
+        }
     }
 
     interface IGamer
     {
         string Name { get; }
         void ReceiveMessage(string msg);
+
+        string Team { get; set; }
     }
 
     class Gamer : IGamer
     {
         public string Name { get; private set; }
+        public string Team { get; set; }
 
         public Gamer(string name)
         {
@@ -83,9 +95,11 @@ namespace AdvancedCSharp.Samples.Patterns
             Console.WriteLine($"Gamer {Name} has new message: {msg}");
         }
     }
+
     class GameWatcher : IGamer
     {
         public string Name { get; private set; }
+        public string Team { get; set; } = "";
 
         public GameWatcher(string name)
         {

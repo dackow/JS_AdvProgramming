@@ -29,12 +29,19 @@ namespace AdvancedCSharp.Samples.Threads
             Console.WriteLine("CommonCounter was increased {0} times", _commonCounter.ToString("N0"));
             Console.ReadKey();
         }
-
+        private static object _lock = new object();
         private static void Increment1()
         {
             while (_commonCounter < 10_000_000)
             {
-                _commonCounter++;
+                lock (_lock)
+                {
+                    if (_commonCounter == 10_000_000)
+                    {
+                        break;
+                    }
+                    _commonCounter++;
+                }
                 _thread1Counter++;
             }
         }
@@ -42,7 +49,14 @@ namespace AdvancedCSharp.Samples.Threads
         {
             while (_commonCounter < 10_000_000)
             {
-                _commonCounter++;
+                lock (_lock)
+                {
+                    if (_commonCounter == 10_000_000)
+                    {
+                        break;
+                    }
+                    _commonCounter++;
+                }
                 _thread2Counter++;
             }
         }

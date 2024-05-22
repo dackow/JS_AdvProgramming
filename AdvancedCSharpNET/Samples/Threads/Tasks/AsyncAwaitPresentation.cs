@@ -31,7 +31,11 @@ namespace AdvancedCSharp.Samples.Tasks
             string result = "";
             try
             {
-                var t = SayHiByNameAsync(myName);
+                Task<string> t = SayHiByNameAsync(myName);
+
+
+                SynchronizationContext sc = SynchronizationContext.Current;
+
                 Task.Delay(2000).Wait();
                 result = await t; //Check Main Tread and Worker Thread
             }
